@@ -1,17 +1,34 @@
-pub fn print() {
-    println!("config!");
-}
-
+/// Creates a function that converts celsuis to farenheit.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(68, p22::calc::celsius2farenheit(20));
+/// ```
 pub fn celsius2farenheit(celsius: i32) -> i32 {
     let farenheit: i32 = (celsius * 9 / 5) + 32;
     return farenheit;
 }
 
+/// Creates a function that converts farenheit to celsuis.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(40, p22::calc::farenheit2celsius(104));
+/// ```
 pub fn farenheit2celsius(farenheit: i32) -> i32 {
     let celsius: i32 = (farenheit - 32) * 5 / 9;
     return celsius;
 }
 
+/// Fibonacci loop function.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(102334155, p22::calc::fibonacci_rec(40));
+/// ```
 pub fn fibonacci_loop(n: u32) -> u64 {
     if n == 0 {
         return 0;
@@ -32,6 +49,13 @@ pub fn fibonacci_loop(n: u32) -> u64 {
     return fibonacci_number;
 }
 
+/// Recorsive Fibonacci function.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(102334155, p22::calc::fibonacci_rec(40));
+/// ```
 pub fn fibonacci_rec(n: u32) -> u64 {
     match n {
         0 => return 0,
