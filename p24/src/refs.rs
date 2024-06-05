@@ -26,12 +26,11 @@ pub fn f4(slice: &[u32]) -> [&[u32]; 4] {
     let part1_end = part_size.min(len);
     let part2_end = (2 * part_size).min(len);
     let part3_end = (3 * part_size).min(len);
-    
+
     let part1 = &slice[0..part1_end];
     let part2 = &slice[part1_end..part2_end];
     let part3 = &slice[part2_end..part3_end];
     let part4 = &slice[part3_end..len];
-    
+
     [part1, part2, part3, part4]
 }
-

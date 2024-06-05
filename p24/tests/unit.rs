@@ -73,48 +73,48 @@ fn test_f3() {
 
 //f4 unit tests
 #[test]
-    fn test_f4_even() {
-        let data = [1, 2, 3, 4, 5, 6, 7, 8];
-        let parts = p24::refs::f4(&data);
+fn test_f4_even() {
+    let data = [1, 2, 3, 4, 5, 6, 7, 8];
+    let parts = p24::refs::f4(&data);
 
-        assert_eq!(parts[0], [1, 2]);
-        assert_eq!(parts[1], [3, 4]);
-        assert_eq!(parts[2], [5, 6]);
-        assert_eq!(parts[3], [7, 8]);
-    }
+    assert_eq!(parts[0], [1, 2]);
+    assert_eq!(parts[1], [3, 4]);
+    assert_eq!(parts[2], [5, 6]);
+    assert_eq!(parts[3], [7, 8]);
+}
 
-    #[test]
-    fn test_f4_uneven() {
-        let data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        let parts = p24::refs::f4(&data);
+#[test]
+fn test_f4_uneven() {
+    let data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let parts = p24::refs::f4(&data);
 
-        assert_eq!(parts[0], [1, 2, 3]);
-        assert_eq!(parts[1], [4, 5, 6]);
-        assert_eq!(parts[2], [7, 8, 9]);
-        assert_eq!(parts[3], [10]);
-        //if the two last code lines are replaced by the following the test should fail
-        //assert_eq!(parts[2], [7, 8]);
-        //assert_eq!(parts[3], [9, 10]);
-    }
+    assert_eq!(parts[0], [1, 2, 3]);
+    assert_eq!(parts[1], [4, 5, 6]);
+    assert_eq!(parts[2], [7, 8, 9]);
+    assert_eq!(parts[3], [10]);
+    //if the two last code lines are replaced by the following the test should fail
+    //assert_eq!(parts[2], [7, 8]);
+    //assert_eq!(parts[3], [9, 10]);
+}
 
-    #[test]
-    fn test_f4_fewer_elements() {
-        let data = [1, 2, 3];
-        let parts = p24::refs::f4(&data);
+#[test]
+fn test_f4_fewer_elements() {
+    let data = [1, 2, 3];
+    let parts = p24::refs::f4(&data);
 
-        assert_eq!(parts[0], [1]);
-        assert_eq!(parts[1], [2]);
-        assert_eq!(parts[2], [3]);
-        assert_eq!(parts[3], []);
-    }
+    assert_eq!(parts[0], [1]);
+    assert_eq!(parts[1], [2]);
+    assert_eq!(parts[2], [3]);
+    assert_eq!(parts[3], []);
+}
 
-    #[test]
-    fn test_f4_empty() {
-        let data: [u32; 0] = [];
-        let parts = p24::refs::f4(&data);
+#[test]
+fn test_f4_empty() {
+    let data: [u32; 0] = [];
+    let parts = p24::refs::f4(&data);
 
-        assert_eq!(parts[0], []);
-        assert_eq!(parts[1], []);
-        assert_eq!(parts[2], []);
-        assert_eq!(parts[3], []);
-    }
+    assert_eq!(parts[0], []);
+    assert_eq!(parts[1], []);
+    assert_eq!(parts[2], []);
+    assert_eq!(parts[3], []);
+}
