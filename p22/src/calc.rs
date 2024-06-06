@@ -7,7 +7,7 @@
 /// ```
 pub fn celsius2farenheit(celsius: i32) -> i32 {
     let farenheit: i32 = (celsius * 9 / 5) + 32;
-    return farenheit;
+    farenheit
 }
 
 /// Creates a function that converts farenheit to celsuis.
@@ -19,7 +19,7 @@ pub fn celsius2farenheit(celsius: i32) -> i32 {
 /// ```
 pub fn farenheit2celsius(farenheit: i32) -> i32 {
     let celsius: i32 = (farenheit - 32) * 5 / 9;
-    return celsius;
+    celsius
 }
 
 /// Fibonacci loop function.
@@ -44,9 +44,9 @@ pub fn fibonacci_loop(n: u32) -> u64 {
         fibonacci_number = f0 + f1;
         f0 = f1;
         f1 = fibonacci_number;
-        mycounter = mycounter + 1;
+        mycounter += 1;
     }
-    return fibonacci_number;
+    fibonacci_number
 }
 
 /// Recorsive Fibonacci function.
@@ -58,8 +58,36 @@ pub fn fibonacci_loop(n: u32) -> u64 {
 /// ```
 pub fn fibonacci_rec(n: u32) -> u64 {
     match n {
-        0 => return 0,
-        1 => return 1,
-        _ => return fibonacci_rec(n - 2) + fibonacci_rec(n - 1),
+        0 => 0,
+        1 => 1,
+        _ => fibonacci_rec(n - 2) + fibonacci_rec(n - 1),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::calc::{celsius2farenheit, farenheit2celsius, fibonacci_loop, fibonacci_rec};
+    #[test]
+    fn unit_farenhiet2celsius() {
+        let celsuis: i32 = 40;
+        assert_eq!(celsuis, farenheit2celsius(104));
+    }
+
+    #[test]
+    fn unit_celsius2farenhiet() {
+        let farenheit: i32 = 104;
+        assert_eq!(farenheit, celsius2farenheit(40));
+    }
+
+    #[test]
+    fn unit_fibonacci_rec() {
+        let result: u64 = 102334155;
+        assert_eq!(result, fibonacci_rec(40));
+    }
+
+    #[test]
+    fn unit_fibonacci_loop() {
+        let result: u64 = 102334155;
+        assert_eq!(result, fibonacci_loop(40));
     }
 }

@@ -4,7 +4,7 @@ extern crate test;
 mod tests {
     use std::hint::black_box;
     use test::Bencher;
-#[bench]
+    #[bench]
     fn benchmark_fibonacci_loop(b: &mut Bencher) {
         b.iter(|| black_box(p22::calc::fibonacci_loop(6)));
     }
