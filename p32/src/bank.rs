@@ -1,5 +1,5 @@
-use std::fmt;
 use std::collections::HashMap;
+use std::fmt;
 // Create User struct with String field name, u64 field credit_line, and i64 field balance (positive number means debit, negative credit)
 #[derive(Debug, Clone)]
 pub struct User {
@@ -57,7 +57,12 @@ impl Bank {
         (liabilities, assets)
     }
 
-    pub fn transfer_funds(&mut self, from_user: &str, to_user: &str, amount: u64) -> Result<(), &'static str> {
+    pub fn transfer_funds(
+        &mut self,
+        from_user: &str,
+        to_user: &str,
+        amount: u64,
+    ) -> Result<(), &'static str> {
         let mut from_index = None;
         let mut to_index = None;
 
@@ -94,7 +99,8 @@ impl Bank {
                 let interest_amount = user.balance as f64 * (self.credit_interest as f64 / 10000.0);
                 user.balance += interest_amount.round() as i64;
             } else if user.balance < 0 {
-                let interest_amount = user.balance.abs() as f64 * (self.debit_interest as f64 / 10000.0);
+                let interest_amount =
+                    user.balance.abs() as f64 * (self.debit_interest as f64 / 10000.0);
                 user.balance -= interest_amount.round() as i64;
             }
         }
@@ -116,11 +122,14 @@ impl Bank {
             }
         }
 
-        self.users = user_map.into_iter().map(|(name, (credit_line, balance))| User {
-            name,
-            credit_line,
-            balance,
-        }).collect();
+        self.users = user_map
+            .into_iter()
+            .map(|(name, (credit_line, balance))| User {
+                name,
+                credit_line,
+                balance,
+            })
+            .collect();
     }
 }
 
@@ -173,7 +182,6 @@ impl UserBank for Bank {
     }
 }
 
-
 impl fmt::Display for Bank {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         writeln!(f, "Bank Name: {}", self.name)?;
@@ -181,7 +189,18 @@ impl fmt::Display for Bank {
         writeln!(f, "Debit Interest: {} basis points", self.debit_interest)?;
         writeln!(f, "Users:")?;
         for user in &self.users {
-            writeln!(f, "{}: {} (Credit Line: {}, Balance: {})", user.name, if user.balance >= 0 { "Asset" } else { "Liability" }, user.credit_line, user.balance)?;
+            writeln!(
+                f,
+                "{}: {} (Credit Line: {}, Balance: {})",
+                user.name,
+                if user.balance >= 0 {
+                    "Asset"
+                } else {
+                    "Liability"
+                },
+                user.credit_line,
+                user.balance
+            )?;
         }
         Ok(())
     }
