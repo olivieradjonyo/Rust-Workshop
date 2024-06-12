@@ -10,7 +10,9 @@ pub struct BigUint4096 {
 
 impl BigUint4096 {
     pub fn new() -> Self {
-        BigUint4096 { limbs: [0; NUM_LIMBS] }
+        BigUint4096 {
+            limbs: [0; NUM_LIMBS],
+        }
     }
 
     pub fn from_u64(val: u64) -> Self {
@@ -25,7 +27,11 @@ impl BigUint4096 {
         }
 
         let mut limbs = [0u64; NUM_LIMBS];
-        let hex = if s.len() % 16 == 0 { s.to_string() } else { format!("{:0>width$}", s, width = ((s.len() + 15) / 16) * 16) };
+        let hex = if s.len() % 16 == 0 {
+            s.to_string()
+        } else {
+            format!("{:0>width$}", s, width = ((s.len() + 15) / 16) * 16)
+        };
         let bytes = hex.as_bytes();
 
         for (i, chunk) in bytes.chunks(16).rev().enumerate() {
@@ -37,7 +43,12 @@ impl BigUint4096 {
     }
 
     pub fn to_hex_string(&self) -> String {
-        self.limbs.iter().rev().map(|limb| format!("{:016x}", limb)).collect::<Vec<_>>().concat()
+        self.limbs
+            .iter()
+            .rev()
+            .map(|limb| format!("{:016x}", limb))
+            .collect::<Vec<_>>()
+            .concat()
     }
 }
 
