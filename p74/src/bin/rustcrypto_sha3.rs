@@ -1,4 +1,3 @@
-use hex;
 use sha3::{
     digest::{Digest, ExtendableOutput, Update, XofReader},
     Sha3_256, Sha3_512, Shake128, Shake256,

@@ -1,4 +1,3 @@
-use hex;
 use sha2::{Digest, Sha256, Sha512};
 use std::env;
 use std::fs::File;
