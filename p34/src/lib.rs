@@ -8,6 +8,12 @@ pub struct BigUint4096 {
     limbs: [u64; NUM_LIMBS],
 }
 
+impl Default for BigUint4096 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl BigUint4096 {
     pub fn new() -> Self {
         BigUint4096 {
