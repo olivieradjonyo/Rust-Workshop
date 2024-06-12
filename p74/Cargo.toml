@@ -1,0 +1,10 @@
+[package]
+name = "p74"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sha2 = "0.10"
+hex = "0.4"
+sha3 = "0.10"
+aes-siv = "0.7.0"

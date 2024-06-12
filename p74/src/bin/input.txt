@@ -1,0 +1,2 @@
+Hello guys! Here's the Rust expert.
+Let me hash your files with my code!
